@@ -1,16 +1,18 @@
 using Cw7.Models;
+using Cw7.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cw7.Controllers;
 
 [ApiController]
 [Route("api/[Controller]")]
-public class PcsController : ControllerBase
+public class PcsController(IPcService service) : ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
     {
-        return Ok();
+        
+        return Ok(await service.getAllAync(cancellationToken));
     }
     
     [HttpGet("{id:int}")]

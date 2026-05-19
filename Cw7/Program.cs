@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Cw7.Infrastructure;
+using Cw7.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+
+builder.Services.AddScoped<IPcService, PcService>();
 
 builder.Services.AddDbContext<DatabaseContext>(opt =>
 {
