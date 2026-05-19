@@ -4,6 +4,7 @@ using Cw7.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cw7.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20260519225824_seed")]
+    partial class seed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -302,7 +305,7 @@ namespace Cw7.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2026, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2026, 5, 20, 0, 58, 23, 798, DateTimeKind.Local).AddTicks(1396),
                             Name = "Gaming Beast X",
                             Stock = 5,
                             Warranty = 36,
@@ -311,7 +314,7 @@ namespace Cw7.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2026, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2026, 4, 20, 0, 58, 23, 806, DateTimeKind.Local).AddTicks(9374),
                             Name = "Office Mini Pro",
                             Stock = 12,
                             Warranty = 24,
@@ -320,9 +323,9 @@ namespace Cw7.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2025, 5, 20, 0, 58, 23, 806, DateTimeKind.Local).AddTicks(9475),
                             Name = "Macbook pro",
-                            Stock = 1,
+                            Stock = 0,
                             Warranty = 12,
                             Weight = 1.55f
                         });
