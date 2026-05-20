@@ -102,6 +102,9 @@ public class PcService (DatabaseContext ctx) : IPcService
 
     public async Task DeletePcAsync(int pcId, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var affectedRows = await ctx.Pcs.Where(p => p.Id == pcId)
+            .ExecuteDeleteAsync(cancellationToken);
+        
+        if (affectedRows == 0) throw new PcNotFoundException("Pc " + pcId + " not found");
     }
 }
