@@ -1,6 +1,5 @@
 using Cw7.DTOs;
 using Cw7.Exceptions;
-using Cw7.Models;
 using Cw7.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,9 +37,18 @@ public class PcsController(IPcService service) : ControllerBase
     }
     
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update([FromRoute] int id)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdatePcRequestDto request, CancellationToken cancellationToken)
     {
-        return Ok();
+        try
+        {
+            await service.UpdatePcAsync(id, request, cancellationToken);
+            return NoContent();
+        } 
+        catch (PcNotFoundException e)
+        {
+            return NotFound(e.Message);
+        }
+        
     }
 
     [HttpDelete("{id:int}")]
