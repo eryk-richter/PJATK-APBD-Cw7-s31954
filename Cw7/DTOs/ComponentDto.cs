@@ -6,6 +6,6 @@ public record ComponentDto(
     [MaxLength(10)] string Code,
     [MaxLength(300)] string Name,
     string Description,
-    string ComponentTypeName,
-    [MaxLength(300)] string ComponentManufacturerName
+    ManufacturerDto Manufacturer,
+    TypeDto Type
     );

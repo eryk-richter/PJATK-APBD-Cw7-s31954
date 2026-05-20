@@ -1,3 +1,4 @@
+using Cw7.Exceptions;
 using Cw7.Models;
 using Cw7.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -15,10 +16,17 @@ public class PcsController(IPcService service) : ControllerBase
         return Ok(await service.getAllAync(cancellationToken));
     }
     
-    [HttpGet("{id:int}")]
-    public async Task<IActionResult> GetById([FromRoute] int id)
+    [HttpGet("{id:int}/components")]
+    public async Task<IActionResult> GetById([FromRoute] int id,  CancellationToken cancellationToken)
     {
-        return Ok();
+        try
+        {
+            return Ok(await service.GetComponentsByPcIdAsync(id, cancellationToken));
+        }
+        catch (PcNotFoundException e)
+        {
+            return NotFound(e.Message);
+        }
     }
 
     [HttpPost]
