@@ -13,7 +13,7 @@ public class PcsController(IPcService service) : ControllerBase
     public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
     {
         
-        return Ok(await service.getAllAync(cancellationToken));
+        return Ok(await service.GetAllAync(cancellationToken));
     }
     
     [HttpGet("{id:int}/components")]

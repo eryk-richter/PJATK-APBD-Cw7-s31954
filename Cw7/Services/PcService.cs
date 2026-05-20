@@ -7,7 +7,7 @@ namespace Cw7.Services;
 
 public class PcService (DatabaseContext ctx) : IPcService
 {
-    public async Task<IEnumerable<PcDto>> getAllAync(CancellationToken cancellationToken)
+    public async Task<IEnumerable<PcDto>> GetAllAync(CancellationToken cancellationToken)
     {
         return await ctx.Pcs.Select(pc => new PcDto(
             pc.Id,
