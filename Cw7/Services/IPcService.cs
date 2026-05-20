@@ -7,5 +7,5 @@ public interface IPcService
 {
     public Task<IEnumerable<PcDto>> GetAllAync(CancellationToken cancellationToken);
     public Task<PcDetailsDto> GetComponentsByPcIdAsync(int pcId, CancellationToken cancellationToken);
-
+    public Task<PcDto> AddPcAsync(CreatePcRequestDto request, CancellationToken cancellationToken);
 }

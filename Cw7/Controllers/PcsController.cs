@@ -1,3 +1,4 @@
+using Cw7.DTOs;
 using Cw7.Exceptions;
 using Cw7.Models;
 using Cw7.Services;
@@ -30,9 +31,10 @@ public class PcsController(IPcService service) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Add()
+    public async Task<IActionResult> Add([FromBody] CreatePcRequestDto request, CancellationToken cancellationToken)
     {
-        return Ok();
+        var pc = await service.AddPcAsync(request, cancellationToken);
+        return CreatedAtAction(nameof(GetById), new { id = pc.Id }, pc);
     }
     
     [HttpPut("{id:int}")]
